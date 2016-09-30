@@ -237,7 +237,7 @@ class SeminarScreencaster:
         homedir = os.getcwd()
 
         if not directory_ok(recordpath):
-            print 'Cannot create directory for recording, call Stas Fomin!'
+            print 'Cannot create directory "%s" for recording, call Stas Fomin!' % recordpath
             sys.exit(0)
 
         stime = self.iso_time()
@@ -253,6 +253,7 @@ class SeminarScreencaster:
 
         try:
             while True:
+                self.reload_screens()
                 self.activate_screencasting()
                 self.print_status_line()
                 time.sleep(10)
@@ -268,7 +269,7 @@ def main():
     '''
     Start recording from all available sources.
     '''
-    recordpath = 'avifiles'
+    recordpath = 'screencasts'
     if len(sys.argv) > 1:
         recordpath = sys.argv[1]
 
